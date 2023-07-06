@@ -1,0 +1,241 @@
+local commandEvent = game.ReplicatedStorage.CommandEvent --Made by NOTAMAN123445      Roblox         Admin commands
+local function setcash_player (person, number)--SetCash command
+	local player = game.Players:FindFirstChild(person) --finds player
+	local leaderstats = player.leaderstats --players leaderstats
+	leaderstats.Cash.Value = number --sets leaderstats
+end
+local function loopkill_player (person, amount)--loopkill command
+	local player = game.Players:FindFirstChild(person)
+	local character = player.Character
+	local hum = character.Humanoid
+	local max = amount
+	local total = 0
+	repeat
+		hum.Health = -10
+		total += 1
+		print(total)
+		hum.Health = -10
+		wait(5)
+	until total == max
+end
+local function infhealth_player (person)--infhealth command
+	local player = game.Players:FindFirstChild(person)
+	local char = player.Character
+	local hum = char.Humanoid
+	hum.MaxHealth = 1000000000000
+	hum.Health = 1000000000000
+end
+local function setrebirths (person, number)--setrebirths command
+	local player = game.Players:FindFirstChild(person)
+	local leaderstats = player.leaderstats
+	leaderstats.Rebirths.Value = number
+end
+local function setlevel (person, number)--setlevel command
+	local player = game.Players:FindFirstChild(person)
+	local leaderstats = player.leaderstats
+	leaderstats.Level.Value = number
+end
+local function setdiamonds (person, number)--setdiamonds command
+	local player = game.Players:FindFirstChild(person)
+	local leaderstats = player.leaderstats
+	leaderstats.Diamonds.Value = number
+end
+local function setrubys (person, number)--setRubys command
+	local player = game.Players:FindFirstChild(person)
+	local leaderstats = player.leaderstats
+	leaderstats.Rubys.Value = number
+end
+local function npc_player (person)--npc command
+	local player = game.Players:FindFirstChild(person)
+	local char = player.Character
+	local humanoid = char.Humanoid
+	humanoid:MoveTo(Vector3.new(10, 3,10))
+	wait(5)
+	humanoid:MoveTo(Vector3.new(-100, 3, -200))
+end
+local function blind_player (person)--blind command
+	local players = game.Players
+	local player = players:FindFirstChild(person)
+	local starterGui = player.PlayerGui
+	local blindscreen = starterGui.Blind
+	local frame = blindscreen.Frame
+	frame.Visible = true
+end
+local function nuke_player (person)--Nuke comamnd
+	local player = game.Players:FindFirstChild(person)
+	local char = player.Character
+	local humanoid = char.Humanoid
+	humanoid.Health = 0
+	wait(3)
+	player:Kick("You were kicked becuase admin nuked you")
+end
+local function baseplate_command (person)--baseplate command
+	local player = game.Players:FindFirstChild(person)
+	local leaderstats = player.leaderstats
+	local baseplate = game.Workspace.Baseplate
+	local baseclone = baseplate:Clone()
+	baseclone.Name = "Baseplate2"
+	baseclone.Parent =	game.Workspace
+	baseclone.Position = Vector3.new(0, 100, 0)
+end
+local function kill_player (person)-- kill command
+	local players = game.Players
+	local player = players:FindFirstChild(person)
+	local char = player.Character
+	local hum = char.Humanoid
+	hum.Health = 0
+end
+local function random_command (person)-- random command
+	local ran = math.random(1, 2)
+	if ran == 1 then
+		kill_player(person)
+	else
+		print(2)
+		nuke_player(person)
+	end
+end
+local function farland_player (person)--farland command
+	local player = game.Players:FindFirstChild(person)
+	local char = player.Character
+	local HRP = char.HumanoidRootPart
+	HRP.CFrame = game.Workspace.FarlandPart.CFrame
+end
+local function unfarland_player (person)--unfarland command
+	local player = game.Players:FindFirstChild(person)
+	player.Character.HumanoidRootPart.CFrame = game.Workspace.PartBack.CFrame
+end
+local function freeze_player (person)--freeze command
+	local player = game.Players:FindFirstChild(person)
+	local humanoid = player.Character.Humanoid
+	humanoid.WalkSpeed = 0
+	humanoid.JumpPower = 0
+end
+local function unfreeze_player (person)--unfreeze command
+	local player = game.Players:FindFirstChild(person)
+	local humanoid = player.Character.Humanoid
+	humanoid.WalkSpeed = 16
+	humanoid.JumpPower = 50
+end
+local function tool3_player (person)--tool3 command
+	local tool = game.ServerStorage.Tool3
+	local player = game.Players:FindFirstChild(person)
+	local backpack = player.Backpack
+	local clone = tool:Clone()
+	clone.Name = "Touch to heal"
+	clone.Parent = backpack
+end
+local function tool2_player (person)--tool2  command
+	local tool = game.ServerStorage.Tool2
+	local player = game.Players:FindFirstChild(person)
+	local backpack = player.Backpack
+	local clone = tool:Clone()
+	clone.Name = "Touch to kill"
+	clone.Parent = backpack
+end
+local function tool_player (person)--tool command
+	local toool = game.ServerStorage.ClassicSword
+	local player = game.Players:FindFirstChild(person)
+	local backpack = player.Backpack
+	local toolclone = toool:Clone()
+	toolclone.Name = "Sword"
+	toolclone.Parent = backpack
+end
+local function kick_player (person)-- kick command
+	local player = game.Players:FindFirstChild(person)
+	player:Kick("You have been Kicked by a Admin of this game")
+end
+local function heal_player (person)--healcommand
+	local player = game.Players:FindFirstChild(person)
+	player.Character.Humanoid.Health = 100
+end
+local function tp_player (person, person2)--tp command
+	local player1 = game.Players:FindFirstChild(person)
+	local player2 = game.Players:FindFirstChild(person2)
+	local player1Char = player1.Character
+	local player2Char = player2.Character
+	local player1HRP = player1Char.HumanoidRootPart
+	local player2HRP = player2Char.HumanoidRootPart
+	player1HRP.CFrame = player2HRP.CFrame
+end
+local function invis_player (person)-- invis command      Made by NOTAMAN123445        Roblox
+	local player = game.Players:FindFirstChild(person)
+	local plr = player.Character
+	for _, limb in pairs(plr:GetChildren()) do		
+		if limb:IsA("BasePart")	then
+			limb.Transparency = 1
+			if limb.Name == "Head" then
+				limb.face.Transparency = 1
+			end
+		elseif limb:IsA("Accessory") then
+			limb.Handle.Transparency = 1
+		end
+	end
+end
+local function uninvis_player (person)-- uninvis command
+	local player = game.Players:FindFirstChild(person)
+	local plr = player.Character
+	for _, limb in pairs(plr:GetChildren()) do
+		if limb:IsA("BasePart")	then
+			limb.Transparency = 0
+			if limb.Name == "Head" then
+				limb.face.Transparency = 0
+			elseif limb.Name == "HumanoidRootPart" then
+				limb.Transparency = 1
+			end
+		elseif limb:IsA("Accessory") then
+			limb.Handle.Transparency = 0
+		end		
+	end
+end
+local actions1 = {
+	"/Kill",
+	"/Kick", --done
+	"/Invis", --done
+	"/Uninvis", --done
+	"/Freeze", --done
+	"/Unfreeze", --done
+	"/Heal", --done
+	"/Tp", --done
+	"/Farland", --done
+	"/Unfarland", --done
+	"/Tool",
+	"/Nuke",
+	"/Npc",
+	"/Random",
+	"/Blind",
+	"/Setcash", -- 1done
+	"/Setlevel",--145
+	"/Setdiamonds",--123
+	"/Setrubys",--12
+	"/Setrebirths",--17777
+	"/Tool2",
+	"/Tool3",
+	"/Baseplate", --clone and move up
+	"/Loopkill",
+	"/Infhealth"
+}
+local actions = {["/Kill"] = kill_player,["/Kick"] = kick_player,["/Invis"] = invis_player, ["/Uninvis"] = uninvis_player,["/Freeze"] = freeze_player,["/Unfreeze"] = unfreeze_player,["/Heal"] = heal_player,["/Tp"] = tp_player,["/Farland"] = farland_player,["/Unfarland"] = unfarland_player,["/Tool"] = tool_player,["/Nuke"] = nuke_player,["/Npc"] = npc_player,["/Random"] = random_command,["/Blind"] = blind_player,["/Setcash"] = setcash_player,["/Setlevel"] = setlevel,["/Setdiamonds"] = setdiamonds,["/Setrubys"] = setrubys,["/Setrebirths"] = setrebirths,["/Tool2"] = tool2_player,["/Tool3"] = tool3_player,["/Baseplate"] = baseplate_command,["/Loopkill"] = loopkill_player,["/Infhealth"] = infhealth_player}
+local function valid_command (action)-- real command???????
+	for _, command in pairs(actions1) do 
+		if command == action then
+			print("Valid comamnd")
+			return true
+		end
+	end
+end
+local function valid_player (person)-- real player???????????
+	local player = game.Players:FindFirstChild(person)
+	if player then
+		print("Valid player")
+		return true
+	end
+end
+local function do_command (player, action, person, person2)
+	if valid_command(action) and valid_player(person) then
+		actions[action](person, person2)
+	else
+		warn("Error Admin Commands")		
+	end
+end
+commandEvent.OnServerEvent:Connect(do_command)
+--    Made by NOTAMAN123445                   Roblox
